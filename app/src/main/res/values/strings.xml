@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Color Guide</string>
+
+    <string name="img_content_desc">image</string>
+
+    <string name="plant_rus">Астра</string>
+    <string name="plant_lat">Aster</string>
+    <string name="plant_desc">Род травянистых растений семейства Астровые, или Сложноцветные,
+        включающий более двухсот видов, широко распространенных в культуре как декоративные
+        растения с красивыми соцветиями-корзинками разнообразной окраски.</string>
 </resources>
