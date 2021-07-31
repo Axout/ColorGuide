@@ -21,7 +21,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:contentDescription="@string/img_content_desc"
-                    android:src="@drawable/ic_florist"/>
+                    android:src="@drawable/pic_astra"/>
 
             <TextView
                     android:id="@+id/flower_rus"

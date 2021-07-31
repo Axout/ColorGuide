@@ -16,7 +16,7 @@ import java.util.List;
 
 public class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.FlowerHolder> {
 
-    private Context context;
+    private final Context context;
     private List<Flower> flowers;
 
     public FlowerAdapter(Context context, List<Flower> flowers) {

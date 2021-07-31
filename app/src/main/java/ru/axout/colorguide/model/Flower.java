@@ -9,7 +9,7 @@ public class Flower implements Serializable {
 
     @SerializedName("flower_id")
     @Expose
-    private int flower_id;
+    private long flower_id;
 
     @SerializedName("flower_img")
     @Expose
@@ -27,7 +27,7 @@ public class Flower implements Serializable {
     @Expose
     private String flower_desc;
 
-    public int getFlower_id() {
+    public long getFlower_id() {
         return flower_id;
     }
 
@@ -47,7 +47,7 @@ public class Flower implements Serializable {
         return flower_desc;
     }
 
-    public void setFlower_id(int flower_id) {
+    public void setFlower_id(long flower_id) {
         this.flower_id = flower_id;
     }
 
