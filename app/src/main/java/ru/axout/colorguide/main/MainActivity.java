@@ -11,7 +11,7 @@ import ru.axout.colorguide.model.Flower;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements MainContract.MainView{
+public class MainActivity extends AppCompatActivity implements MainContract.MainView {
 
     RecyclerView recyclerView;
     FlowerAdapter flowerAdapter;
@@ -28,13 +28,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(flowerAdapter);
 
+        // запрашиваем данные у модели, но через Presenter
+        // создавая объект presenter, мы в конструкторе делаем запрос к серверу
         presenter = new MainPresenter(this);
         presenter.getAllFlowers();
     }
 
     @Override
     public void showMessage(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     @Override

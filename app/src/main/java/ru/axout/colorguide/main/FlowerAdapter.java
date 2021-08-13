@@ -14,6 +14,7 @@ import ru.axout.colorguide.model.Flower;
 
 import java.util.List;
 
+// Адаптер - упрощает корректирование RecyclerView после изменения данных в режиме реального времени.
 public class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.FlowerHolder> {
 
     private final Context context;
@@ -26,11 +27,14 @@ public class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.FlowerHold
 
     public void setFlowers(List<Flower> flowers) {
         this.flowers = flowers;
-        // Сообщим всем зарегистрированным наблюдателям, что данные изменились.
-        // Это необходимо для обновления отображения RecyclerView.
+
+        // Укажем адаптеру, что полученные ранее данные изменились и следует перерисовать список на экране.
+        // Причём обновляются данные уже имеющегося адаптера.
+        // Таким образом мы имеем только один объект, который работает все время отображения списка.
         notifyDataSetChanged();
     }
 
+    // привязка макета к адаптеру
     @NonNull
     @Override
     public FlowerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,6 +42,7 @@ public class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.FlowerHold
         return new FlowerHolder(view);
     }
 
+    // запись данных с сервера в переменные класса FlowerHolder, которые связаны с элементами макета
     @Override
     public void onBindViewHolder(@NonNull FlowerHolder holder, int position) {
         Flower item = flowers.get(position);
@@ -49,8 +54,8 @@ public class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.FlowerHold
 
         Picasso.get()
                 .load(item.getFlower_img())
-                .error(R.drawable.ic_florist)
-                .placeholder(R.drawable.ic_florist)
+                .error(R.drawable.ic_florist) // при ошибке открытия картинки отобразим иконку
+                .placeholder(R.drawable.ic_florist) // будет отображаться, пока нет данных
                 .fit()
                 .into(holder.flowerImg);
     }
@@ -61,12 +66,14 @@ public class FlowerAdapter extends RecyclerView.Adapter<FlowerAdapter.FlowerHold
         else return flowers.size();
     }
 
+    // обращение к элементам макета через переменные класса FlowerHolder
     static class FlowerHolder extends RecyclerView.ViewHolder {
 
         Flower flower;
         ImageView flowerImg;
         TextView flowerRus, flowerLat, flowerDesc;
 
+        // конструктор
         FlowerHolder(@NonNull View itemView) {
             super(itemView);
 
